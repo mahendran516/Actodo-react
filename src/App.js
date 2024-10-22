@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Card from './component/Card';
+import Header from './component/Header';
+import './index.css';
+import TodoContainer from './component/TodoContainer';
+import { useState } from 'react';
+import Landing from './pages/Landing';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import {BrowserRouter, Route,Routes} from "react-router-dom"
+
+
+
+
+function App()
+{
+    const [user, setUser] = useState([{ username: "mahe", password: "123" }]);
+    return(
+<div>
+ <BrowserRouter>
+ <Routes>
+  <Route path='/'element={<Login user={user} setUser={setUser} />}></Route>
+  <Route path='/Signup'element={<Signup user={user} setUser={setUser} />}></Route>
+  <Route path='/Landing'element={<Landing/>}></Route>
+ </Routes>
+ </BrowserRouter>
+</div>
+    )
 }
 
 export default App;
